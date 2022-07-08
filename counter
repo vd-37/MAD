@@ -1,0 +1,126 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/Counter"
+        android:layout_width="183dp"
+        android:layout_height="48dp"
+        android:textColor="#673AB7"
+        android:textSize="25dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.385"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.297" />
+
+    <Button
+        android:id="@+id/start"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Start"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.452" />
+
+    <Button
+        android:id="@+id/stop"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Stop"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.616" />
+
+    <Button
+        android:id="@+id/reset"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Reset"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.414"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.758" />
+
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="378dp"
+        android:layout_height="50dp"
+        android:text="COUNTER APPLICATION"
+        android:textColor="#673AB7"
+        android:textSize="30dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.484"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.132" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+package com.example.spu_counter;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.os.Bundle;
+import android.os.Handler;
+import android.view.View;
+import android.widget.Button;
+import android.widget.TextView;
+
+public class MainActivity extends AppCompatActivity implements  View.OnClickListener {
+    Button start,stop,clear;
+    TextView counter;
+    int i=0;
+    Handler myHandler = new Handler();
+
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        counter= (TextView)findViewById(R.id.Counter);
+        start=(Button) findViewById(R.id.start);
+        start.setOnClickListener(this);
+        stop=(Button) findViewById(R.id.stop);
+        clear=findViewById(R.id.reset);
+        clear.setOnClickListener(this);
+        stop.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(view.equals(start)){
+            myHandler.postDelayed(Threatcount,1000);
+        }
+        else if(view.equals(stop)){
+            myHandler.removeCallbacks(Threatcount);
+        }
+        else if(view.equals(clear)){
+            counter.setText(""+0);
+            myHandler.removeCallbacks(Threatcount);
+            i=0;
+        }
+    }
+    public Runnable Threatcount=new Runnable(){
+        @Override
+        public void run(){
+            counter.setText(""+i);
+            i++;
+            myHandler.postDelayed(Threatcount,1000);
+        }
+    };
+}
