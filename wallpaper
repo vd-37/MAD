@@ -1,0 +1,92 @@
+WALLPAPER XML
+
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <TextView
+        android:id="@+id/textView"
+        android:layout_width="371dp"
+        android:layout_height="98dp"
+        android:text="Changing Wall Paper Application"
+        android:textAlignment="center"
+        android:textColor="#9575CD"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.116" />
+
+    <Button
+        android:id="@+id/btn_click"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:backgroundTint="@color/cardview_shadow_start_color"
+        android:text="click here"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.469"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.307" />
+</androidx.constraintlayout.widget.ConstraintLayout>
+
+
+
+WALLPAPER JAVA
+
+package com.example.ddp;
+
+import androidx.appcompat.app.AppCompatActivity;
+
+import android.app.WallpaperManager;
+import android.graphics.BitmapFactory;
+import android.os.Bundle;
+import android.view.View;
+import android.widget.Button;
+
+import java.io.IOException;
+import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
+
+public class MainActivity extends AppCompatActivity implements View.OnClickListener {
+Button click;
+boolean running;
+int[] img = new int[]{R.drawable.img1,R.drawable.img2,R.drawable.img3,R.drawable.img4,R.drawable.img5};
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.activity_main);
+        click = (Button) findViewById(R.id.btn_click);
+        click.setOnClickListener(this);
+    }
+
+    @Override
+    public void onClick(View view) {
+        if(!running){
+
+            new Timer().schedule(new myTimer(),0,3000);
+            running = true;
+        }
+    }
+
+    private class myTimer extends TimerTask {
+
+        @Override
+        public void run() {
+            WallpaperManager wpm = WallpaperManager.getInstance(getBaseContext());
+            Random rad = new Random();
+            try {
+                wpm.setBitmap(BitmapFactory.decodeResource(getResources(),img[rad.nextInt(5)]));
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
+}
