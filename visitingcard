@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".MainActivity">
+
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="136dp">
+
+        <TextView
+            android:id="@+id/textView"
+            android:layout_width="wrap_content"
+            android:layout_height="55dp"
+            android:layout_alignParentStart="true"
+            android:layout_alignParentTop="true"
+            android:layout_alignParentEnd="true"
+            android:layout_alignParentBottom="true"
+            android:layout_marginStart="17dp"
+            android:layout_marginTop="52dp"
+            android:layout_marginEnd="199dp"
+            android:layout_marginBottom="38dp"
+            android:text="DRBD TECH"
+            android:textAlignment="center"
+            android:textColor="#0099ff"
+            android:textSize="30dp"
+            android:textStyle="bold" />
+
+        <ImageView
+            android:id="@+id/imageView3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_alignParentEnd="true"
+            android:layout_marginEnd="17dp"
+            tools:srcCompat="@tools:sample/avatars" />
+
+    </RelativeLayout>
+
+    <View
+        android:id="@+id/view2"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/textView2"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="DURGA PRASAD D"
+        android:textSize="27dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#6600cc"/>
+    <TextView
+        android:id="@+id/textView3"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="System Engineer"
+        android:textSize="27dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#6600cc"/>
+
+    <View
+        android:id="@+id/view3"
+        android:layout_width="match_parent"
+        android:layout_height="5dp"
+        android:background="@color/black"/>
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="9845109109"
+        android:textSize="27dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#6600cc"/>
+    <TextView
+        android:id="@+id/textView4"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="Bangalore"
+        android:textSize="27dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#6600cc"/>
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="match_parent"
+        android:layout_height="35dp"
+        android:text="durgaprasadd253@gmail.com"
+        android:textSize="27dp"
+        android:textAlignment="center"
+        android:textStyle="bold"
+        android:textColor="#6600cc"/>
+
+</LinearLayout>
